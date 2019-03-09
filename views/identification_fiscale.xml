@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="partner_instructor_form_view">
+            <field name="name">partner.instructor</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="identification fiscale">
+                        <group>
+                            <field name="nif"/>
+                            <field name="nis" />
+                            <field name="numero_article" />
+                        </group>
+                        <group>
+                            <field name="numero_registre"/>
+                            <field name="date_modification"/>
+                            <field name="capitale_sociale"/>
+                        </group>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="identification_fiscale">
+            <field name="name">Contacts</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem id="id_facturation" name="identification Fiscale"/>
+        <menuitem id="id_facturation_gauche" name="Identification fiscale" parent="id_facturation"/>
+        <menuitem id="numero" name="Identification fiscale"
+                  parent="id_facturation_gauche"
+                  action="identification_fiscale"/>
+    </data>
+</odoo>
